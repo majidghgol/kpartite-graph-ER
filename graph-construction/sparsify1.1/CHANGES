@@ -1,0 +1,8 @@
+Version 1.1
+-----------
+
+Some simple changes so that buildHashtable() does its job in a
+single pass through the input graph, which is an improvement over
+the implementation in Version 1.0. Overall, the code is around 2x
+faster (for the sparsifications based on hashing - the code for
+the baseline sparsifications is the same). 

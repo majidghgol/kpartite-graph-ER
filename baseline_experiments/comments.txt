@@ -1,0 +1,48 @@
+- Limes does not take into account missing properties, the sparql
+query looks like this:
+
+PREFIX ex: <http://ex.usc.isi.edu/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX diseasome: <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/>
+PREFIX dbpedia-p: <http://dbpedia.org/property/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX sider: <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/>
+PREFIX dc: <http://purl.org/dc/terms/>
+SELECT DISTINCT ?y ?v0 ?v1 ?v2 ?v3
+WHERE {
+?y rdf:type ex:Product .
+?y ex:product_name ?v0 .
+?y ex:product_price ?v1 .
+?y ex:product_description ?v2 .
+?y ex:manufacturer_name ?v3 .
+}
+
+--- only 231 products out of ~3K have all the properties in the
+google dataset.
+
+--- in google: 3035 have description, 3226 have price and name
+                and only 232 have manufacturer
+    in amazon: 1248 have desc, 1363 have price and name and man_name
+
+--- for publications we always have all the fields so this
+    will not be a problem
+
+--- for products a metric combination of:
+    - price+desc+name
+        + price distance smaller than $10
+        + for desc cosine similarity is used
+        + for name trigrams is used
+    - price+name
+        + price distance smaller than $10
+        + for name trigrams is used
+
+--- for publications a metric combination of:
+    - title+authors(unordered)
+           + for title trigrams is used
+           + for authors soft jaccard is used
+    - title+auth1+other_authors(unordered)
+           + for title trigrams is used
+           + for first author jaro is used
+           + for other authors soft jaccard is used

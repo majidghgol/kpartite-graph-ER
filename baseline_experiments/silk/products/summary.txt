@@ -1,0 +1,64 @@
+TIMES:
+
+10%: 0m13.972s
+20%: 0m46.055s
+30%: 1m36.284s
+40%: 2m27.711s
+50%: 3m30.736s
+60%: 4m59.465s
+70%: 6m48.202s
+80%: 8m16.618s
+90%: 10m3.236s
+100%: 14m2.943s
+
+
+result:
+    precision: 0.458417849899
+    recall: 0.347692307692
+    F-score: 0.395450568679
+
+    TIME: real	13m28.615s
+
+spec:
+    <Aggregate id="prodName_prodMan" required="false" weight="1" type="average">
+      <Compare id="lev_name" required="false" weight="20" metric="qGrams" threshold="0.6"
+               indexing="true">
+        <TransformInput id="unnamed_1" function="lowerCase">
+          <Input id="unnamed_2" path="?a/ex:product_name"/>
+        </TransformInput>
+        <TransformInput id="unnamed_3" function="lowerCase">
+          <Input id="unnamed_4" path="?b/ex:product_name"/>
+        </TransformInput>
+        <Param name="minChar" value="0"/>
+        <Param name="q" value="3"/>
+        <Param name="maxChar" value="z"/>
+      </Compare>
+      <Compare id="lev_man" required="false" weight="10" metric="qGrams" threshold="0.6"
+               indexing="true">
+        <TransformInput id="unnamed_5" function="lowerCase">
+          <Input id="unnamed_6" path="?a/ex:manufacturer_name"/>
+        </TransformInput>
+        <TransformInput id="unnamed_7" function="lowerCase">
+          <Input id="unnamed_8" path="?b/ex:manufacturer_name"/>
+        </TransformInput>
+        <Param name="q" value="3"/>
+      </Compare>
+      <Compare id="price_num" required="false" weight="5" metric="num" threshold="20"
+               indexing="true">
+        <TransformInput function="numReduce">
+          <Input path="?a/ex:product_price"/>
+        </TransformInput>
+        <TransformInput function="numReduce">
+          <Input path="?b/ex:product_price"/>
+        </TransformInput>
+      </Compare>
+      <Compare id="cosineSim" required="false" weight="1" metric="dice" threshold="0.6"
+               indexing="true">
+        <TransformInput id="unnamed_121" function="tokenize">
+          <Input id="unnamed_131" path="?a/ex:product_description"/>
+        </TransformInput>
+        <TransformInput id="unnamed_141" function="tokenize">
+          <Input id="unnamed_151" path="?b/ex:product_description"/>
+        </TransformInput>
+      </Compare>
+    </Aggregate>

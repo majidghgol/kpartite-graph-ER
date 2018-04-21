@@ -1,0 +1,26 @@
+
+# Which compiler to use
+#CC = cc
+CC = g++
+
+# What optimization level to use
+OPTFLAGS = -O3
+#OPTFLAGS =  
+
+# What options to be used by the compiler
+
+#getting too many warnings about deprecated conversions from
+#string constant to char*, let's just suppress them using
+#Wno-write-strings
+
+#COPTIONS= -Wno-write-strings -g
+#COPTIONS =  -Wall -g
+COPTIONS = -Wno-write-strings
+#COPTIONS = 
+
+INCLUDES = -I.
+
+# What options to be used by the loader
+LDOPTIONS = 
+
+

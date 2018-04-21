@@ -1,0 +1,26 @@
+- price and name
+    - metric: AND(euqledian(x.priceA,y.priceG)|0.05, trigrams(x.nameA,y.nameG)|0.6)
+    - result:
+        precision: 0.446581196581
+        recall: 0.160769230769
+        F-score: 0.236425339367
+
+- name and desc
+    - metric: AND(cosine(x.descA,y.descG)|0.3, trigrams(x.nameA,y.nameG)|0.6)
+    - result:
+        precision: 0.494809688581
+        recall: 0.11
+        F-score: 0.179987413468
+
+
+TIME:
+10%: 0m1.180s
+20%: 0m1.614s
+30%: 0m1.449s
+40%: 0m1.912s
+50%: 0m2.250s
+60%: 0m2.277s
+70%: 0m2.773s
+80%: 0m3.221s
+90%: 0m3.255s
+100%:0m3.336s

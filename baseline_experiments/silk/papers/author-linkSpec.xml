@@ -1,0 +1,75 @@
+<Silk>
+  <Prefixes>
+    <Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix id="dbpp" namespace="http://dbpedia.org/property/"/>
+    <Prefix id="dcterm" namespace="http://purl.org/dc/terms/"/>
+    <Prefix id="dc" namespace="http://purl.org/dc/elements/1.1/"/>
+    <Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+    <Prefix id="foaf" namespace="http://xmlns.com/foaf/0.1/"/>
+    <Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix id="dbpediaowl" namespace="http://dbpedia.org/ontology/"/>
+    <Prefix id="linkedmdb" namespace="http://data.linkedmdb.org/resource/movie/"/>
+    <Prefix id="ex" namespace="http://ex.usc.isi.edu/ontology/"/>
+  </Prefixes>
+  <DataSources>
+    <Dataset id="Amazon" type="file">
+      <Param name="file" value="/Users/majid/Dropbox/ISI/entity-coreference/2016-iswc-entity-resolution/dataset/paper/authors_triples_flat.nt"/>
+      <Param name="format" value="N-TRIPLE"/>
+    </Dataset>
+    <Dataset id="Google" type="file">
+      <Param name="file" value="/Users/majid/Dropbox/ISI/entity-coreference/2016-iswc-entity-resolution/dataset/paper/authors_triples_flat.nt"/>
+      <Param name="format" value="N-TRIPLE"/>
+    </Dataset>
+  </DataSources>
+  <Interlinks>
+    <Interlink id="names">
+      <SourceDataset dataSource="Amazon" var="a">
+        <RestrictTo>
+
+        </RestrictTo>
+      </SourceDataset>
+      <TargetDataset dataSource="Google" var="b">
+        <RestrictTo>
+
+        </RestrictTo>
+      </TargetDataset>
+      <LinkageRule linkType="owl:sameAs">
+        <Aggregate id="prodName_prodMan" required="false" weight="1" type="average">
+          <Compare id="lev_name" required="true" weight="30" metric="jaro" threshold="0.1"
+                   indexing="true">
+            <TransformInput id="unnamed_1" function="removeBlanks">
+              <Input id="unnamed_2" path="?a/ex:author_name"/>
+            </TransformInput>
+            <TransformInput id="unnamed_3" function="removeBlanks">
+              <Input id="unnamed_4" path="?b/ex:author_name"/>
+            </TransformInput>
+            <Param name="minChar" value="0"/>
+            <Param name="q" value="3"/>
+            <Param name="maxChar" value="z"/>
+          </Compare>
+          <Compare id="lev_man" required="true" weight="5" metric="softjaccard" threshold="0.5"
+                   indexing="true">
+            <TransformInput id="unnamed_5" function="lowerCase">
+              <Input id="unnamed_6" path="?a/ex:paper_title"/>
+            </TransformInput>
+            <TransformInput id="unnamed_7" function="lowerCase">
+              <Input id="unnamed_8" path="?b/ex:paper_title"/>
+            </TransformInput>
+            <Param name="q" value="3"/>
+          </Compare>
+        </Aggregate>
+        <Filter/>
+      </LinkageRule>
+
+    </Interlink>
+  </Interlinks>
+  <Transforms>
+
+  </Transforms>
+  <Outputs>
+    <Dataset id="Amazon" type="file" >
+      <Param name="file" value="authors_dup.nt"/>
+      <Param name="format" value="N-TRIPLE"/>
+    </Dataset>
+  </Outputs>
+</Silk>

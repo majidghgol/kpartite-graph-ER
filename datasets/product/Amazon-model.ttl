@@ -1,0 +1,588 @@
+@prefix ex: <http://ex.usc.isi.edu/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix km-dev: <http://isi.edu/integration/karma/dev#> .
+
+_:node1agdse39cx1 a km-dev:R2RMLMapping ;
+	km-dev:sourceName "Amazon.csv" ;
+	km-dev:modelPublicationTime "1460754910508"^^xsd:long ;
+	km-dev:modelVersion "1.7" ;
+	km-dev:hasInputColumns "[[{\"columnName\":\"title\"}],[{\"columnName\":\"id\"}],[{\"columnName\":\"description\"}],[{\"columnName\":\"price\"}],[{\"columnName\":\"manufacturer\"}]]" ;
+	km-dev:hasOutputColumns "[[{\"columnName\":\"title\"}],[{\"columnName\":\"id\"}],[{\"columnName\":\"description\"}],[{\"columnName\":\"price\"}],[{\"columnName\":\"manufacturer\"}],[{\"columnName\":\"product_uri\"}]]" ;
+	km-dev:hasModelLabel "Amazon.csv" ;
+	km-dev:hasBaseURI "http://ex.isi.edu/" ;
+	km-dev:hasWorksheetHistory """[
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"id\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"product_uri\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"return \\\"product/\\\"+getValue(\\\"id\\\")\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"id\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"product_uri\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SetWorksheetPropertiesCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"properties\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"graphLabel\": \"\",
+                    \"hasBaseURI\": true,
+                    \"baseURI\": \"http://ex.isi.edu/\",
+                    \"hasPrefix\": false,
+                    \"hasServiceProperties\": false
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SetWorksheetPropertiesCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"properties\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"graphLabel\": \"\",
+                    \"hasBaseURI\": false,
+                    \"prefix\": \"ex\",
+                    \"hasPrefix\": true,
+                    \"hasServiceProperties\": false
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"product_uri\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://ex.usc.isi.edu/ontology/Product\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://ex.usc.isi.edu/ontology/Product1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"ex:Product1 (add)\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"product_uri\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"product_uri\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"id\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://ex.usc.isi.edu/ontology/product_id\",
+                    \"DomainLabel\": \"ex:Product1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"id\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"id\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"title\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://ex.usc.isi.edu/ontology/prodcut_title\",
+                    \"DomainLabel\": \"ex:Product1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"title\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"title\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"description\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://ex.usc.isi.edu/ontology/prodcut_description\",
+                    \"DomainLabel\": \"ex:Product1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"description\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"description\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"manufacturer\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://ex.usc.isi.edu/ontology/prodcut_manufacturer\",
+                    \"DomainLabel\": \"ex:Product1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"manufacturer\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"manufacturer\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"price\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://ex.usc.isi.edu/ontology/Product\",
+                    \"DomainId\": \"http://ex.usc.isi.edu/ontology/Product1\",
+                    \"isPrimary\": true,
+                    \"FullType\": \"http://ex.usc.isi.edu/ontology/price\",
+                    \"DomainLabel\": \"ex:Product1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"price\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"price\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    }
+]""" .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 a rr:TriplesMap .
+
+_:node1agdse39cx1 km-dev:hasTriplesMap km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx2 rr:tableName "Amazon.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasLogicalTable _:node1agdse39cx2 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:logicalTable _:node1agdse39cx2 ;
+	rr:subjectMap _:node1agdse39cx3 .
+
+_:node1agdse39cx1 km-dev:hasSubjectMap _:node1agdse39cx3 .
+
+_:node1agdse39cx3 km-dev:isPartOfMapping _:node1agdse39cx1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://ex.usc.isi.edu/ontology/Product1" ;
+	rr:class ex:Product ;
+	rr:template "product/{id}" ;
+	a km-dev:steinerTreeRootNode .
+
+km-dev:PredicateObjectMap_e3159e4c-d05a-4bbf-a007-a0bea419e9a1 rr:predicate ex:prodcut_title .
+
+_:node1agdse39cx4 rr:column "title" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasObjectMap _:node1agdse39cx4 .
+
+km-dev:PredicateObjectMap_e3159e4c-d05a-4bbf-a007-a0bea419e9a1 rr:objectMap _:node1agdse39cx4 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:predicateObjectMap km-dev:PredicateObjectMap_e3159e4c-d05a-4bbf-a007-a0bea419e9a1 .
+
+km-dev:PredicateObjectMap_e3159e4c-d05a-4bbf-a007-a0bea419e9a1 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_e3159e4c-d05a-4bbf-a007-a0bea419e9a1 .
+
+km-dev:PredicateObjectMap_7de68940-7b44-4bec-b8db-357425deca28 rr:predicate ex:product_id .
+
+_:node1agdse39cx5 rr:column "id" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasObjectMap _:node1agdse39cx5 .
+
+km-dev:PredicateObjectMap_7de68940-7b44-4bec-b8db-357425deca28 rr:objectMap _:node1agdse39cx5 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:predicateObjectMap km-dev:PredicateObjectMap_7de68940-7b44-4bec-b8db-357425deca28 .
+
+km-dev:PredicateObjectMap_7de68940-7b44-4bec-b8db-357425deca28 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_7de68940-7b44-4bec-b8db-357425deca28 .
+
+km-dev:PredicateObjectMap_9e0b3aa4-ab61-4031-9bee-649b6f87e2c7 rr:predicate ex:prodcut_description .
+
+_:node1agdse39cx6 rr:column "description" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasObjectMap _:node1agdse39cx6 .
+
+km-dev:PredicateObjectMap_9e0b3aa4-ab61-4031-9bee-649b6f87e2c7 rr:objectMap _:node1agdse39cx6 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:predicateObjectMap km-dev:PredicateObjectMap_9e0b3aa4-ab61-4031-9bee-649b6f87e2c7 .
+
+km-dev:PredicateObjectMap_9e0b3aa4-ab61-4031-9bee-649b6f87e2c7 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_9e0b3aa4-ab61-4031-9bee-649b6f87e2c7 .
+
+km-dev:PredicateObjectMap_89105b51-f66c-453f-b06d-d5b1d9b518e7 rr:predicate ex:price .
+
+_:node1agdse39cx7 rr:column "price" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasObjectMap _:node1agdse39cx7 .
+
+km-dev:PredicateObjectMap_89105b51-f66c-453f-b06d-d5b1d9b518e7 rr:objectMap _:node1agdse39cx7 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:predicateObjectMap km-dev:PredicateObjectMap_89105b51-f66c-453f-b06d-d5b1d9b518e7 .
+
+km-dev:PredicateObjectMap_89105b51-f66c-453f-b06d-d5b1d9b518e7 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_89105b51-f66c-453f-b06d-d5b1d9b518e7 .
+
+km-dev:PredicateObjectMap_3308f09d-98ea-4d39-963d-af3cf10db301 rr:predicate ex:prodcut_manufacturer .
+
+_:node1agdse39cx8 rr:column "manufacturer" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasObjectMap _:node1agdse39cx8 .
+
+km-dev:PredicateObjectMap_3308f09d-98ea-4d39-963d-af3cf10db301 rr:objectMap _:node1agdse39cx8 .
+
+km-dev:TriplesMap_4a05e771-5401-44f0-87ed-58ede64e3329 rr:predicateObjectMap km-dev:PredicateObjectMap_3308f09d-98ea-4d39-963d-af3cf10db301 .
+
+km-dev:PredicateObjectMap_3308f09d-98ea-4d39-963d-af3cf10db301 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1agdse39cx1 .
+
+_:node1agdse39cx1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_3308f09d-98ea-4d39-963d-af3cf10db301 .

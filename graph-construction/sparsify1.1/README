@@ -1,0 +1,75 @@
+Compilation:
+------------
+
+- A simple 'make' should do in Unix-like environments. It creates
+  the executable 'sparsify' in the top-level directory. The
+  compiling options (debug, optimize etc.) can be changed in
+  Makefile.in. When compiling with the optimization flags
+  enabled, warnings about ignoring return values appear. These
+  may be ignored safely.
+
+- 'make clean' will erase the object files and the executable.
+
+General Usage and Options:
+--------------------------
+
+- Executing a program without arguments will print its usage.
+
+- The options may be specified in any order (similar to how it
+  works for general unix utilities).
+
+- Higher values for the numHashes option (m) result in greater
+  accuracy in the similarity estimation but take longer. m can be
+  set anywhere from 20 to 100 - m=30 should suffice in most
+  cases.
+
+- The sparsifyExponent e is used to control the extent of
+  sparsification for the local case. The default is e=0.5. Use
+  lower values for denser graphs, and higher values for sparser
+  graphs.
+ 
+- For global sparsification, the extent of sparsification is
+  controlled by directly specifying the desired fraction of edges
+  in the output graph (globalFraction option).
+  
+- Please see our paper (see reference below) for more details on
+  how varying the options affects the output and the performance. 
+
+Input and output formats:
+------------------------
+
+- The input format is the same as that for Metis, Graclus and
+  MLR-MCL. A pdf document explaining this format is available at
+  http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf
+  You may also look at the 'example.graph' file to see an example
+  graph in this format, with 1,000 nodes and 23,119 edges.
+
+- The format of the output sparsified graph is the same as the
+  format for the input graph.
+
+Example invocations:
+--------------------
+
+- Below are some example runs of the sparsify program, using
+  example.graph as the input.
+
+- ./sparsify example.graph -o example.spars
+  (Run under default settings: local sparsify using 30 hashes and
+  e=0.5. Output will be in example.spars)
+- ./sparsify example.graph -b 0 -m 50 -e 0.4 -o example.spars
+  (Local sparsification using 50 hashes and e = 0.4)
+- ./sparsify example.graph -b 3 -r 0.3 -o example.spars
+  (Exact global sparsification, retaining 30% of the edges)
+ 
+References:
+-----------
+
+- Venu Satuluri, Srinivasan Parthasarathy and Yiye Ruan. "Local
+  Graph Sparsification for Scalable Clustering." Proceedings of
+  ACM SIGMOD 2011. 
+
+Acknowledgments:
+----------------
+
+I am grateful to the authors of Metis, from which some of the 
+utility routines in this package are borrowed. 

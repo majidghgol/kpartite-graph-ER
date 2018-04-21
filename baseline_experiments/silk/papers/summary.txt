@@ -1,0 +1,95 @@
+-- papers:
+    precision: 0.87723537941
+    recall: 0.755620316403
+    F-score: 0.811898904048
+
+    TIMES:
+        10%: 0m13.705s
+        20%: 0m38.688s
+        30%: 1m14.676s
+        40%: 1m50.740s
+        50%: 2m25.247s
+        60%: 2m12.490s
+        70%: 2m28.528s
+        80%: 3m32.926s
+        90%: 3m20.083s
+        100%: 4m13.542s
+
+    CONFIG:
+        <Aggregate id="prodName_prodMan" required="false" weight="4" type="average">
+          <Compare id="jacard_authors" required="true" weight="1" metric="softjaccard" threshold="0.6"
+                   indexing="true">
+            <TransformInput id="unnamed_1" function="lowerCase">
+              <Input id="unnamed_2" path="?a/ex:paper_author/ex:author_name"/>
+            </TransformInput>
+            <TransformInput id="unnamed_3" function="lowerCase">
+              <Input id="unnamed_4" path="?b/ex:paper_author/ex:author_name"/>
+            </TransformInput>
+            <Param name="minChar" value="0"/>
+            <Param name="q" value="3"/>
+            <Param name="maxChar" value="z"/>
+          </Compare>
+          <Compare id="ngram-title" required="true" weight="20" metric="qGrams" threshold="0.2"
+                   indexing="true">
+            <TransformInput id="unnamed_5" function="lowerCase">
+              <Input id="unnamed_6" path="?a/ex:paper_title"/>
+            </TransformInput>
+            <TransformInput id="unnamed_7" function="lowerCase">
+              <Input id="unnamed_8" path="?b/ex:paper_title"/>
+            </TransformInput>
+            <Param name="q" value="3"/>
+          </Compare>
+          <Compare id="jaro_first_auth" required="true" weight="20" metric="jaro" threshold="0.3"
+                   indexing="true">
+            <TransformInput function="lowerCase">
+              <Input path="?a/ex:paper_first_author/ex:author_name"/>
+            </TransformInput>
+            <TransformInput function="lowerCase">
+              <Input path="?b/ex:paper_first_author/ex:author_name"/>
+            </TransformInput>
+            <Param name="q" value="3"/>
+          </Compare>
+        </Aggregate>
+
+-- authors:
+    precision: 0.931576330184
+    recall: 0.958309887974
+    F-score: 0.944754028089
+
+    TIMES:
+        10%: 0m2.920s
+        20%: 0m7.820s
+        30%: 0m6.630s
+        40%: 0m12.657s
+        50%: 0m13.029s
+        60%: 0m11.799s
+        70%: 0m13.893s
+        80%: 0m17.366s
+        90%: 0m19.569s
+        100%: 0m24.137s
+
+    CONFIG:
+        <Aggregate id="prodName_prodMan" required="false" weight="1" type="average">
+          <Compare id="lev_name" required="true" weight="30" metric="jaro" threshold="0.2"
+                   indexing="true">
+            <TransformInput id="unnamed_1" function="removeBlanks">
+              <Input id="unnamed_2" path="?a/ex:author_name"/>
+            </TransformInput>
+            <TransformInput id="unnamed_3" function="removeBlanks">
+              <Input id="unnamed_4" path="?b/ex:author_name"/>
+            </TransformInput>
+            <Param name="minChar" value="0"/>
+            <Param name="q" value="3"/>
+            <Param name="maxChar" value="z"/>
+          </Compare>
+          <Compare id="lev_man" required="true" weight="5" metric="softjaccard" threshold="0.5"
+                   indexing="true">
+            <TransformInput id="unnamed_5" function="lowerCase">
+              <Input id="unnamed_6" path="?a/ex:published_paper/ex:paper_author"/>
+            </TransformInput>
+            <TransformInput id="unnamed_7" function="lowerCase">
+              <Input id="unnamed_8" path="?b/ex:published_paper/ex:paper_author"/>
+            </TransformInput>
+            <Param name="q" value="3"/>
+          </Compare>
+        </Aggregate>

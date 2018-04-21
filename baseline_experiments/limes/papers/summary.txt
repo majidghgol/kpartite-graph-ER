@@ -1,0 +1,37 @@
+Papers:
+metric: ADD(0.55*trigrams(x.titleX,y.titleY), 0.45*jaro(x.nameX,y.nameY))
+threshold: 0.75
+precision: 0.827071072884
+recall: 0.760616153206
+F-score: 0.792452830189
+
+TIMES:
+10%: 0m1.293s
+20%: 0m2.070s
+30%: 0m2.212s
+40%: 0m2.593s
+50%: 0m2.755s
+60%: 0m3.470s
+70%: 0m3.414s
+80%: 0m4.018s
+90%: 0m4.648s
+100%: 0m4.397s
+
+Authors:
+metric: ADD(0.8*jaro(x.nameX,y.nameY), 0.2*jaro(x.coauthX, y.coauthY))
+threshold: 0.85
+precision: 0.91185770751
+recall: 0.944089211724
+F-score: 0.927693583654
+
+TIMES:
+10%: 0m1.792s
+20%: 0m3.574s
+30%: 0m5.684s
+40%: 0m9.032s
+50%: 0m12.274s
+60%: 0m18.253s
+70%: 0m22.899s
+80%: 0m29.848s
+90%: 0m40.277s
+100%: 0m49.844s

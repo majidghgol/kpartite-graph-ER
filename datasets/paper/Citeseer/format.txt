@@ -1,0 +1,2 @@
+author_id | author_cluster_id | normalized_author | full_author | author_number_in_paper | paper_id | paper_cluster_id | title
+
